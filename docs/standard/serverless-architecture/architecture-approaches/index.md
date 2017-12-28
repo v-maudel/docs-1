@@ -1,6 +1,6 @@
 ---
-title: Serverless Apps. Architecture, Patterns, and Azure Implementation.
-description: Serverless Apps. Architecture, Patterns, and Azure Implementation. | Architecture approaches
+title: Serverless apps. Architecture, patterns, and Azure implementation.
+description: Serverless apps. Architecture, patterns, and Azure implementation. | Architecture approaches
 keywords: Serverless, Microservices, .NET, Azure, Azure Functions
 author: JEREMYLIKNESS
 ms.author: jeliknes
