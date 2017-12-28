@@ -1,6 +1,6 @@
 ---
-title: Serverless Apps. Architecture, Patterns, and Azure Implementation.
-description: Serverless Apps. Architecture, Patterns, and Azure Implementation. | Front Matter
+title: Serverless apps. Architecture, patterns, and Azure implementation.
+description: Serverless apps. Architecture, patterns, and Azure implementation. | Front matter
 keywords: Serverless, Microservices, .NET, Azure, Azure Functions
 author: JEREMYLIKNESS
 ms.author: jeliknes
@@ -56,7 +56,7 @@ Serverless is the evolution of cloud platforms in the direction of pure cloud na
 
 * What are the pros and cons of serverless?
 * Why should you consider serverless for your own applications?
-* How can you build, test, deploy, and maintain your serverless code? 
+* How can you build, test, deploy, and maintain your serverless code?
 * Where does it make sense to migrate code to serverless in existing applications, and what is the best way to accomplish this?
 
 ## About this guide
@@ -69,28 +69,28 @@ This guide explains the components of the Azure serverless platform and focuses 
 
 Serverless is the culmination of several iterations of cloud platforms.
 
-![Evolution from on-premises to serverless](./media/image1.png)
+![Evolution from on-premises to serverless](./media/serverless-evolution-iaas-paas.png)
 
 Before the cloud a discernable boundary existed between development and operations. Deploying an application meant answering myriad questions like:
 
-* What hardware should I install?
-* How do I secure physical access to the machine?
-* Do I need an Uninterruptible Power Supply (UPS)?
-* Where do I send storage backups?
-* Should I have redundant power
+* What hardware should be installed?
+* How is physical access secured to the machine?
+* Does the data center require an Uninterruptible Power Supply (UPS)?
+* Where are storage backups sent?
+* Should there be redundant power?
 
 The list goes on and the overhead was enormous. In many situations, IT departments were forced to deal with incredible waste. This was due to over-allocation of servers as backup machines for disaster recovery and standby servers to enable scale out. Fortunately, the introduction of Virtual Machines (VMs) gave rise to Infrastructure-as-a-Service (IaaS). This allowed operations to stand up a standard set of servers as the backbone, leading to a flexible environment capable of provisioning unique servers “on demand.” More important, virtualization set the stage for using the cloud to provide virtual machines “as a service.” Companies could easily get out of the business of worrying about redundant power or physical machines. Instead, they focused on the virtual environment.
 
 IaaS still requires heavy overhead because operation is still responsible for various tasks. These include patching and backing up servers, installing packages, keeping the operating, system up to date and monitoring the application. The next evolution solved this by providing Platform-as-a-Service (PaaS). With PaaS, the cloud provider handles operating systems, security patches, and even the required packages to support a specific platform. Instead of building a VM then configuring the .NET Framework and standing up Internet Information Services (IIS) servers, developers simply choose a “platform target” such as “web application” or “API endpoint” and deploy code directly. The infrastructure questions are reduced to:
 
-* What size services do I need?
-* How do I scale out?
-* How do I scale up?
+* What size services are needed?
+* How do the services scale out?
+* How do the services scale up?
 
 Serverless further abstracts servers by focusing on event-driven code. Instead of a platform, developers can literally focus on a microservice that does one thing. The two key questions for building the serverless code are:
 
-* What triggers my code?
-* What does my code do?
+* What triggers the code?
+* What does the code do?
 
 With serverless, infrastructure is abstracted. In fact, in some cases the developer no longer must worry about the host at all. Whether or not an instance of IIS, Kestrel, Apache, or some other web server is running to manage web requests, the developer focuses on an HTTP trigger. The trigger provides the standard, cross-platform payload for a request and a response. This not only simplifies the development process, but facilitates testing and in some cases, makes the code easily portable across platforms.
 
