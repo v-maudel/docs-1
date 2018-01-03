@@ -13,6 +13,8 @@ ms.topic: article
 
 Understanding existing approaches to architecting enterprise apps helps clarify the role played by serverless. There are many approaches and patterns that evolved over decades of software development, and all have their own pros and cons. In many cases, the ultimate solution may not involve deciding on a single approach but may integrate several solutions. Migration scenarios often involve shifting from one architecture approach to another through a hybrid approach.
 
+> TODO: add relevant contextual links
+
 ## N-Tier applications
 
 The N-Tier architecture pattern has existed for many years and simply refers to applications that separate various components of functionality into tiers. The most common implementation of this architecture involves:
