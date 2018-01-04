@@ -11,19 +11,26 @@ ms.topic: article
 ---
 # Architecture approaches
 
-Understanding existing approaches to architecting enterprise apps helps clarify the role played by serverless. There are many approaches and patterns that evolved over decades of software development, and all have their own pros and cons. In many cases, the ultimate solution may not involve deciding on a single approach but may integrate several solutions. Migration scenarios often involve shifting from one architecture approach to another through a hybrid approach.
+Understanding existing approaches to architecting enterprise apps helps clarify the role played by serverless. There are many approaches and patterns that evolved over decades of software development, and all have their own pros and cons. In many cases, the ultimate solution may not involve deciding on a single approach but may integrate several solutions. Migration scenarios often involve shifting from one architecture approach to another through a hybrid approach. This chapter provides an overview of both logical and physical architecture patterns for enterprise applications.
 
 > TODO: add relevant contextual links
 
 ## N-Tier applications
 
-The N-Tier architecture pattern has existed for many years and simply refers to applications that separate various components of functionality into tiers. The most common implementation of this architecture involves:
+The N-Tier architecture pattern has existed for many years and simply refers to applications that separate various components of functionality into tiers. The most common implementation of this architecture includes:
 
 * A presentation tier, for example a web app
 * An API and/or data access tier, such as a REST API
 * A data tier, such as a SQL database
 
 > TODO: N-Tier diagram
+
+N-tier solutions have the following characteristics:
+
+* Projects are typically aligned with tiers
+* Testing may be approached differently by tier
+* Tiers provide layers of abstraction, for example the presentation tier is typically ignorant of the implementation details of the data tier
+* Releases are often managed at the project, and therefore tier, level, so a simple API change may result in a new release of the entire middle tier
 
 This approach provides several benefits, including:
 
@@ -125,7 +132,17 @@ Functions-as-a-Service (FaaS or more specifically OpenFaaS) sits on top of conta
 
 ## Serverless
 
+Serverless is an architecture that relies heavily on abstracting away the host environment to focus on code. It can be thought of as *less server*. Developers using OpenFaaS are able to use existing build scripts to publish code to containers. Other implementations leverage existing PaaS or container-based solutions to provide a scalable architecture. The abstraction means the DevOps team does not have to provision or manage servers, nor specific containers. The serverless platform hosts code, either as script or packaged executables built with a related SDK, and allocates the necessary resources for the code to scale.
 
+A common way to think about serverless is as a code and a trigger. The trigger might be manual, a timed process, an HTTP request, or a file upload. The result of the trigger is the execution of code. Although serverless platforms vary, most provide access to pre-defined APIs and bindings to streamline tasks such as writing to a database or queueing results. The advantages of serverless include:
+
+* High density: many instances of the same serverless code can run on the same host compared to containers or virtual machines
+* Micro-billing: most serverless providers bill based on serverless executions, enabling massive cost savings in certain scenarios
+* Faster time to market: developers focus on code and deploy directly to the serverless platform
+
+> TODO: serverless diagram
+
+Serverless is most often discussed in the context of compute, but can also apply to data. This book focuses on serverless compute.
 
 ## Summary
 
