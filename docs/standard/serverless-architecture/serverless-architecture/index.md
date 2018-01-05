@@ -15,9 +15,11 @@ There are many approaches to using serverless architectures. This chapter explor
 
 ## Serverless architecture examples
 
-Some projects may benefit from taking an "all-in" approach to serverless. Applications that rely heavily on microservices may implement those using serverless technology.
+Some projects may benefit from taking an "all-in" approach to serverless. Applications that rely heavily on microservices may implement those using serverless technology. The majority of apps are hybrid, following an N-tier design and using serverless where it makes sense. To help make sense of these scenarios, this section walks through some common architecture examples that use serverless.
 
 ### Full serverless backend
+
+The full serverless backend is ideal for several types of scenarios, especially when building new or "green field" applications. An application with a large surface area of APIs may benefit from implementing those APIs as serverless functions. The "trigger" is the API call and the result is the code that is executed for the given API. Apps that are based on microservices architecture are another example that could be implemented as a full serverless backend. The microservices communicate over various protocols (the trigger) with each other.
 
 ### Monoliths and “starving the beast”
 
