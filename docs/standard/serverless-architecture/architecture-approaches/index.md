@@ -110,7 +110,7 @@ PaaS addresses these requirements and allows the developer to focus on the code 
 
 The main disadvantage of PaaS traditionally has been vendor lock-in. For example, some solutions only support ASP. NET, Node.js, or other specific languages and platforms. Products like Azure App Service have evolved to address multiple platforms and support a variety of languages and frameworks for hosting web apps.
 
-> TODO: PaaS diagram
+![Platform-as-a-Service Architecture](./media/paas-architecture.png)
 
 ## Software-as-a-Service (SaaS)
 
