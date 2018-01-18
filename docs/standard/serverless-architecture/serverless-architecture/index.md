@@ -19,7 +19,7 @@ Some projects may benefit from taking an "all-in" approach to serverless. Applic
 
 ### Full serverless backend
 
-The full serverless backend is ideal for several types of scenarios, especially when building new or "green field" applications. An application with a large surface area of APIs may benefit from implementing those APIs as serverless functions. The "trigger" is the API call and the result is the code that is executed for the given API. Apps that are based on microservices architecture are another example that could be implemented as a full serverless backend. The microservices communicate over various protocols (the trigger) with each other.
+The full serverless backend is ideal for several types of scenarios, especially when building new or "green field" applications. An application with a large surface area of APIs may benefit from implementing those APIs as serverless functions. Apps that are based on microservices architecture are another example that could be implemented as a full serverless backend. The microservices communicate over various protocols with each other.
 
 ### Monoliths and “starving the beast”
 

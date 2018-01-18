@@ -88,7 +88,7 @@ The traditional approach to hosting applications is to own the entire platform. 
 
 Virtualization of hardware, via "virtual machines" enables Infrastructure-as-a-Service (IaaS). Host machines are effectively partitioned to provide resources for instances that are allocated their own memory, CPU, and storage. The team provisions the necessary VMs and configures the associated networks and access to storage.
 
-> See the [virtual machine N-tier reference architecture](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
+> See the [virtual machine N-tier reference architecture](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
 
 Although virtualization and Infrastructure-as-a-Service (IaaS) address many concerns, it still leaves much responsibility in the hands of the infrastructure team. The team is responsible for maintaining operating system versions, applying security patches, and installing third-party dependencies on the target machines. A common issue is that apps behave differently on production machines compared to the test environment. Issues arise due to different dependency versions and/or OS SKU levels. It is common to deploy N-Tier applications to these targets, but microservices are more challenging due to the requirements to scale out for elasticity and resiliency.
 
