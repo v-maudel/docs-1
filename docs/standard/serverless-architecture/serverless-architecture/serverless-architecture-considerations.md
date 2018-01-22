@@ -33,9 +33,29 @@ There are a few exceptions and solutions. One solution may be to break your proc
 
 ## Startup time
 
+On potential concern with serverless implementations is startup time. In order to conserve resources, many serverless providers create infrastructure "on demand." When a serverless function is triggered after a period of time, the resources to host the function may need to be created and/or restarted. In some situations, cold starts may result in delays of several seconds. Startup time varies across providers and service levels. There are a few approaches to address startup time if it is critical to minimize for the success of the app.
+
+* Some providers allow users to pay for service levels that guarantee infrastructure is "always on"
+* Implement a keep-alive mechanism (ping the endpoint to keep it "awake")
+* Use orchestration like Kubernetes with a containerized function approach
+
 ## Database updates and migrations
 
+An advantage of serverless code is that you can release new functions without having to redeploy the entire application. This advantage can become a disadvantage when there is a database involved. Changes to database schemas can be difficult to synchronize with serverless updates. Additional challenges are posed when things go wrong and the changes must be rolled back. Data integrity is one reason microservices "owning their own data" is a best practice. Changes can be deployed as a single unit of compute and data. The reality is that many legacy systems feature a large backend database that must be reconciled with the microservices architecture.
+
+A popular approach to solve schema versioning is to never modify existing properties and columns, but instead add new information. For example, consider a change to move from a Boolean "completed" flag for a todo list to a "completed date." Instead of removing the old field, the database change will:
+
+1. Add a new "completed date" field
+1. Transform the "completed" date field to a computed function that evaluates whether the completed date is after the current date
+1. Add a trigger to set the completed date to the current date when the completed date is set to true
+
+The sequence of changes ensures that legacy code continues to run "as is" while newer serverless functions can take advantage of the new field.
+
 ## Scaling
+
+It is a common misconception that serverless means "no server." It is in fact "less server." The fact there is a backing infrastructure is important to understand when it comes to scaling. Most serverless platforms provide a set of controls to handle how the infrastructure should scale when event density increases. You can choose from a variety of options, but your strategy may vary depending on the function. Furthermore, functions are typically run under a related host, so that functions on the same host have the same scale options. Therefore it is necessary to organize and strategize which functions are hosted together based on scale requirements.
+
+Rules often specify how to scale-up (increase the host resources) and scale-out (increase the number of host instances) based on varying parameters. Triggers for scales may include schedule, request rates, CPU utilization, and memory usage. It is important to note that higher performance often comes at a greater cost. The less expensive, consumption-based approaches may not scale as quickly when the request rate suddenly increases. There is a trade-off between paying up front "insurance cost" versus paying strictly "as you go" and risking slower responses due to sudden increases in demand.
 
 ## Monitoring, tracing, and logging
 
