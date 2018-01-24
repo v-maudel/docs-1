@@ -46,8 +46,8 @@ An advantage of serverless code is that you can release new functions without ha
 A popular approach to solve schema versioning is to never modify existing properties and columns, but instead add new information. For example, consider a change to move from a Boolean "completed" flag for a todo list to a "completed date." Instead of removing the old field, the database change will:
 
 1. Add a new "completed date" field
-1. Transform the "completed" date field to a computed function that evaluates whether the completed date is after the current date
-1. Add a trigger to set the completed date to the current date when the completed date is set to true
+1. Transform the "completed" Boolean field to a computed function that evaluates whether the completed date is after the current date
+1. Add a trigger to set the completed date to the current date when the completed Boolean is set to true
 
 The sequence of changes ensures that legacy code continues to run "as is" while newer serverless functions can take advantage of the new field.
 
@@ -59,11 +59,21 @@ Rules often specify how to scale-up (increase the host resources) and scale-out 
 
 ## Monitoring, tracing, and logging
 
+An often overlooked aspect of DevOps is monitoring applications once deployed. It is important to have a strategy for monitoring serverless functions. The biggest challenge is often correlation, or recognizing when a user calls multiple functions as part of the same interaction. Most serverless platforms allow console logging that can be imported into third-party tools. There are also options to automate collection of telemetry, generate and track correlation IDs, and monitor specific actions to provide detailed insights. Azure provides the advanced [Application Insights platform](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) for monitoring and analytics.
+
 ## Inter-service dependencies
+
+A serverless architecture may include functions that rely on other functions. In fact, it is not uncommon in a microservices architecture to have multiple services call each other as part of an interaction or distributed transaction. To avoid strong coupling, it is recommended that services don't reference each other directly. When the endpoint for a service needs to change, direct references could result in major refactoring. A suggested solution is to provide a service discovery mechanism, such as a registry, that provides the appropriate end point for a request type.
+
+It is also important to consider the circuit-breaker pattern. If, for some reason, a service continues to fail, it is not advisable to call that service repeatedly. Instead, an alternative service is called or a message returned until the health of the dependent service is re-established. The serverless architecture needs to take into account the strategy for resolving and managing inter-service dependencies.
 
 ## Managing failure and providing resiliency
 
+To continue the circuit-breaker pattern, services need to be fault tolerant and resilient. Fault tolerance is typically a function of the code itself, and how it is written to handle exceptions. Resiliency is often managed by the serverless platform. The platform should be able to spin up a new serverless function instance when the existing one fails. The platform should also be intelligent enough to stop spinning up new instances when every new instance fails.
+
 ## Versioning and green/blue deployments
+
+A major benefit of serverless is the ability to upgrade a specific function without having to redeploy the entire application. For upgrades to be successful, functions must be versioned so that services calling them are routed to the correct version of code. A strategy for deploying new versions is also important. A common approach is to use "green/blue deployments." The green deployment is the current function. A new "blue" version is deployed to production and tested. When testing passes, the green and blue versions are swapped so the new version comes live. If any issues are encountered, they can be swapped back. Supporting versioning and green/blue deployments requires a combination of authoring the functions to accommodate version changes and working with the serverless platform to handle deployments.
 
 >[!div class="step-by-step"]
 [Previous] (./index.md)

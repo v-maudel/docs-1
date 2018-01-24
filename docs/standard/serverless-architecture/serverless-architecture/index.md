@@ -46,9 +46,9 @@ The event-driven paradigm of serverless apps makes them ideal as mobile back-end
 
 Serverless abstracts the server-side dependencies and enables to the developer to focus on business logic. For example, a mobile developer who builds apps using a JavaScript framework can build serverless functions with JavaScript as well. The serverless host manages the operating system, a Node.js instance to host the code, package dependencies, and more. The developer is provided a simple set of inputs and a standard template for outputs. They then can focus on building and testing the business logic. They are therefore able to use existing skills to build the backend logic for the mobile app without having to learn new platforms or become a "server-side developer."
 
-Most cloud providers offer mobile-based serverless products that simplify the entire mobile development lifecycle. The products may automate the provisioning of databases to persist data, automate DevOps concerns, provide cloud-based builds and testing frameworks and the ability to script business processes using the developer's preferred language. Following a mobile-centric serverless approach can streamline the process. Serverless removes the tremendous overhead of provisioning, configuring, and maintaining servers for the mobile backend.
+![Serverless mobile backend](./media/serverless-mobile-backend.png)
 
-> TODO: Mobile and serverless illustration
+Most cloud providers offer mobile-based serverless products that simplify the entire mobile development lifecycle. The products may automate the provisioning of databases to persist data, automate DevOps concerns, provide cloud-based builds and testing frameworks and the ability to script business processes using the developer's preferred language. Following a mobile-centric serverless approach can streamline the process. Serverless removes the tremendous overhead of provisioning, configuring, and maintaining servers for the mobile backend.
 
 ### Internet of Things (IoT)
 
