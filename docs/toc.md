@@ -26,7 +26,9 @@
 ### [Class Library Overview](standard/class-library-overview.md)
 ### [Base Types](standard/base-types/)
 ## [.NET Class libraries](standard/class-libraries.md)
-## [Portability Analyzer](standard/portability-analyzer.md)
+## Analyzers
+### [API Analyzer](standard/analyzers/api-analyzer.md) 
+### [Portability Analyzer](standard/analyzers/portability-analyzer.md)
 ## [Handling and throwing exceptions](standard/exceptions/)
 ## [.NET Assembly File Format](standard/assembly-format.md)
 ## [Garbage Collection](standard/garbage-collection/)
@@ -283,7 +285,6 @@
 <!--## [Tutorials](fsharp/tutorials/index.md)-->
 ## Tutorials
 ### [F# Interactive](fsharp/tutorials/fsharp-interactive/index.md)
-#### [F# Interactive Options](fsharp/tutorials/fsharp-interactive/fsharp-interactive-options.md)
 ### [Type Providers](fsharp/tutorials/type-providers/index.md)
 #### [Accessing a SQL Database by Using Type Providers](fsharp/tutorials/type-providers/accessing-a-sql-database.md)
 #### [Accessing a SQL Database by Using Type Providers and Entities](fsharp/tutorials/type-providers/accessing-a-sql-database-entities.md)
@@ -409,6 +410,7 @@
 ### [Fixed keyword](fsharp/language-reference/fixed.md)
 ### [Compiler Directives](fsharp/language-reference/compiler-directives.md)
 ### [Compiler Options](fsharp/language-reference/compiler-options.md)
+### [F# Interactive Options](fsharp/language-reference/fsharp-interactive-options.md)
 ### [Source Line, File, and Path Identifiers](fsharp/language-reference/source-line-file-path-identifiers.md)
 ### [Caller Information](fsharp/language-reference/caller-information.md)
 ### [Verbose Syntax](fsharp/language-reference/verbose-syntax.md)
