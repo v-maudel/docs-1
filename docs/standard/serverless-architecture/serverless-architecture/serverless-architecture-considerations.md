@@ -4,7 +4,7 @@ description: Serverless apps. Architecture, patterns, and Azure implementation. 
 keywords: Serverless, Microservices, .NET, Azure, Azure Functions
 author: JEREMYLIKNESS
 ms.author: jeliknes
-ms.date: 1/19/2018
+ms.date: 2/6/2018
 ms.prod: .net
 ms.technology: dotnet
 ms.topic: article
