@@ -4,7 +4,7 @@ description: Serverless apps. Architecture, patterns, and Azure implementation. 
 keywords: Serverless, Microservices, .NET, Azure, Azure Functions
 author: JEREMYLIKNESS
 ms.author: jeliknes
-ms.date: 2/6/2018
+ms.date: 2/7/2018
 ms.prod: .net
 ms.technology: dotnet
 ms.topic: article
@@ -35,29 +35,47 @@ In message-based system, events are often collected in queues or publisher/subsc
 
 ## File triggers and transformations
 
+Extract, Transform, and Load (ETL) is a common business function. Serverless is a great solution for ETL because it allows code to be triggered as part of a pipeline. Individual code components can address various aspects. One serverless function may download the file, another perform transformation and another that loads. The code can be tested and deployed independently, making it easier to maintain and scale where needed.
+
 ![Serverless file triggers and transformations](./media/serverless-file-triggers.png)
 
-## Asynchronous background processing
+## Asynchronous background processing and messaging
 
-## Asynchronous messaging
+Asynchronous messaging and background processing allow applications to kick off processes without having to wait. An example of asynchronous processing is an OCR app. An image is submitted and queued for processing. Scanning the image to extract text may take time, and once it is finished a notification is sent. Serverless can handle both the invocation and the result in this scenario.
 
 ## Web apps and APIs
+
+A popular scenario for serverless is N-tier applications, most commonly ones where the UI layer is a web app. The popularity of Single Page Applications (SPA) has surged recently. SPA apps render a single page, then rely on API calls and the returned data to dynamically render new UI without reloading a full page. Client-side rendering provides a much faster, more responsive application to the end user.
+
+Serverless endpoints triggered by HTTP calls can be used to handle the API requests. For example, an ad services company may call a serverless function with user profile information to request custom advertising. The serverless function returns the custom ad and the web page renders it.
 
 ![Serverless web API](./media/serverless-web-api.png)
 
 ## Data pipeline
 
+Serverless functions can be used to facilitate a data pipeline. In this example, a file triggers a function to translate data in a CSV file to data rows in a table. The organized table allows a Power BI dashboard to present analytics to the end user.
+
 ![Serverless data pipeline](./media/serverless-data-pipeline.png)
 
 ## Stream processing
+
+Devices and sensors often generate streams of data that must be processed in real time. There are a number of technologies that can capture messages and streams from [Event Hubs](/azure/event-hubs/event-hubs-what-is-event-hubs) and [IoT Hub](/azure/iot-hub) to [Service Bus](/service-bus). Regardless of transport, serverless is an ideal mechanism for processing the messages and streams of data as they come in. Serverless can scale quickly to meet the demand of large volumes of data. The serverless code can apply business logic to parse the data and output in a structured format for action and analytics.
 
 ![Serverless stream processing](./media/serverless-stream-processing.png)
 
 ## API gateway
 
+An API gateway provides a single point of entry for clients and then intelligently routes requests to backend services. It is useful to manage large sets of services. It can also handle versioning and simplify development by easily connecting clients to disparate environments. Serverless can handle backend scaling of individual microservices while presenting a single front via an API gateway.
+
 ![Serverless API gateway](./media/serverless-api-gateway.png)
 
 ## Recommended Resources
+
+* [Azure Event Grid](/azure/event-grid/overview)
+* [Event Hubs](/azure/event-hubs/event-hubs-what-is-event-hubs)
+* [Designing microservices: identifying microservice boundaries](/azure/architecture/microservices/microservice-boundaries)
+* [IoT Hub](/azure/iot-hub)
+* [Service Bus](/service-bus)
 
 >[!div class="step-by-step"]
 [Previous] (./serverless-architecture-considerations.md)
