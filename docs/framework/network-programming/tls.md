@@ -38,7 +38,7 @@ We recommend that you:
 - Do not specify the TLS version. Configure your code to let the OS decide on the TLS version.
 - Perform a thorough code audit to verify you're not specifying a TLS or SSL version.
 
-When your app lets the OS to choose the TLS version:
+When your app lets the OS choose the TLS version:
 
 - It automatically takes advantage of new protocols added in the future, such as TLS 1.3.
 - The OS blocks protocols that are discovered not to be secure.
@@ -50,6 +50,8 @@ This article explains how to enable the strongest security available for the ver
 If you can't avoid hardcoding a protocol version, we strongly recommend that you specify TLS 1.2. For guidance on identifying and removing TLS 1.0 dependencies, download the [Solving the TLS 1.0 Problem](https://www.microsoft.com/download/details.aspx?id=55266) whitepaper.
 
 WCF Supports TLS1.0, 1.1 and 1.2 as the default in .NET Framework 4.7. Starting with .NET Framework 4.7.1, WCF defaults to the operating system configured version. If an application is explicitly configured with `SslProtocols.None`, WCF uses the operating system default setting when using the NetTcp transport.
+
+You can ask questions about this document in the GitHub issue [Transport Layer Security (TLS) best practices with the .NET Framework](https://github.com/dotnet/docs/issues/4675).
 
 ## Audit your code and make code changes
 
@@ -121,7 +123,7 @@ The WCF framework automatically chooses the highest protocol available up to TLS
 
 We recommend you upgrade your app to .NET Framework 4.7 or later versions. If you cannot upgrade, take the following steps. At some point in the future, your application may fail until you upgrade to .NET Framework 4.7 or later versions.
 
-Set the [SchUseStrongCrypto](#schusestrongcrypto) and [SystemDefaultTlsVersions]#SystemDefaultTlsVersions) registry keys to 1. See [Configuring security via the Windows Registry](#configuring-security-via-the-windows-registry). The .NET Framework version 3.5 supports the `SchUseStrongCrypto` flag only when an explicit TLS value is passed.
+Set the [SchUseStrongCrypto](#schusestrongcrypto) and [SystemDefaultTlsVersions](#systemdefaulttlsversions) registry keys to 1. See [Configuring security via the Windows Registry](#configuring-security-via-the-windows-registry). The .NET Framework version 3.5 supports the `SchUseStrongCrypto` flag only when an explicit TLS value is passed.
 
 If you are running on .NET Framework 3.5, you need to install a hot patch so that TLS 1.2 can be specified by your program:
 
@@ -262,14 +264,14 @@ For your app to negotiate TLS 1.2, the OS and the .NET Framework version both ne
 
 **Operating system requirements to support TLS 1.2**
 
-To enable or re-enable TLS 1.2 and/or TLS 1.1 on a system that supports them, see [TLS/SSL Settings](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786418(v=ws.11)).
+To enable or re-enable TLS 1.2 and/or TLS 1.1 on a system that supports them, see [Transport Layer Security (TLS) registry settings](/windows-server/security/tls/tls-registry-settings).
 
 | **OS** | **TLS 1.2 support** |
 | --- | --- |
 | Windows 10</br>Windows Server 2016 | Supported, and enabled by default. |
 | Windows 8.1</br>Windows Server 2012 R2 | Supported, and enabled by default. |
 | Windows 8.0</br>Windows Server 2012 | Supported, and enabled by default. |
-| Windows 7 SP1</br>Windows Server 2008 R2 SP1 | Supported, but not enabled by default. See the [TLS/SSL Settings](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786418(v=ws.11)) web page for details on how to enable TLS 1.2. |
+| Windows 7 SP1</br>Windows Server 2008 R2 SP1 | Supported, but not enabled by default. See the [Transport Layer Security (TLS) registry settings](/windows-server/security/tls/tls-registry-settings) web page for details on how to enable TLS 1.2. |
 | Windows Server 2008 | Support for TLS 1.2 and TLS 1.1 requires an update. See [Update to add support for TLS 1.1 and TLS 1.2 in Windows Server 2008 SP2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s). |
 | Windows Vista | Not supported. |
 
